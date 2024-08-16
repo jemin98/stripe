@@ -9,7 +9,7 @@ app.get("/", function (req, res, next) {
   res.json({ title: "Stripe App" });
 });
 
-cron.schedule('*/10 * * * * *', () => {
+cron.schedule('*/50 * * * * *', () => {
   const now = new Date();
   const timeString = now.toISOString();
   console.log(`Current Time: ${timeString}`);
