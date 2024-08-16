@@ -16,14 +16,14 @@ app.post('/create-payment-intent', async (req, res) => {
       amount: amount, // amount is in cents
       currency: currency
     });
+    console.log(`paymentIntent : ${paymentIntent}`);
     res.json({ client_secret: paymentIntent.client_secret });
   } catch (e) {
+    console.log(`error : ${e}`);
     console.error('Error creating PaymentIntent:', e);
     res.status(400).json({ error: e.message });
   }
 });
-
-
 
 
 app.listen(3000, () => console.log('Server listening on port 3000'));
