@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "node-cron": "^3.0.3",
     "stripe": "^16.7.0"
   }
 }

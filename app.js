@@ -1,10 +1,21 @@
 const express = require('express');
 const app = express();
+const cron = require('node-cron');
+const fs = require('fs');
 const stripe = require('stripe')('sk_test_51Po493GUkeROApSJ7w41UHAoJk5HMyHPLO9hQXmwRJKCUOewUxKvLGYgJioi8Jdt0TrDbUApXF1eB0y5x2FENMDB00DfUfmoKL');
 app.use(express.json());
 
 app.get("/", function (req, res, next) {
   res.json({ title: "Stripe App" });
+});
+
+cron.schedule('*/10 * * * * *', () => {
+  const now = new Date();
+  const timeString = now.toISOString();
+  console.log(`Current Time: ${timeString}`);
+
+  // Optionally, log the time to a file
+  fs.appendFileSync('time-log.txt', `Current Time: ${timeString}\n`);
 });
 
 app.post('/create-payment-intent', async (req, res) => {
