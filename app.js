@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
-const stripe = require('stripe')('sk_test_51PU1tb08kFrd3w5s8LLZs9DJGIx7800CYYvMkSCOFwbfmAolplKg2UPwhXI0IIiqJfVAJewCnrKqBvckcfe4ck4x00g9Z6XdYX');
+const stripe = require('stripe')('sk_test_51Po493GUkeROApSJ7w41UHAoJk5HMyHPLO9hQXmwRJKCUOewUxKvLGYgJioi8Jdt0TrDbUApXF1eB0y5x2FENMDB00DfUfmoKL');
 app.use(express.json());
+
+app.get("/", function (req, res, next) {
+  res.json({ title: "Stripe App" });
+});
 
 app.post('/create-payment-intent', async (req, res) => {
   const { amount, currency } = req.body;
