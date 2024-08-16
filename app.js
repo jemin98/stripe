@@ -15,6 +15,7 @@ app.post('/create-payment-intent', async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount, // amount is in cents
       currency: currency,
+      setup_future_usage: 'off_session',
     });
     res.json({ client_secret: paymentIntent.client_secret });
   } catch (e) {
@@ -22,6 +23,8 @@ app.post('/create-payment-intent', async (req, res) => {
     res.status(400).json({ error: e.message });
   }
 });
+
+
 
 
 app.listen(3000, () => console.log('Server listening on port 3000'));
