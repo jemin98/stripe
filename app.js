@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const stripe = require('stripe')('your-secret-key-here');
+const stripe = require('stripe')('sk_test_51Po493GUkeROApSJ7w41UHAoJk5HMyHPLO9hQXmwRJKCUOewUxKvLGYgJioi8Jdt0TrDbUApXF1eB0y5x2FENMDB00DfUfmoKL');
 app.use(express.json());
 
 app.post('/create-payment-intent', async (req, res) => {
